@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disbiosis Vaginal | Salud Femenina</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --rosa-fondo: #fff0f7;
+            --rosa-claro: #ffd6eb;
+            --rosa-medio: #ff85c8;
+            --rosa-oscuro: #e84393;
+            --morado: #9c27b0;
+            --texto: #4a2a4d;
+            --verde-cientifico: #6bd6c2;
+            --azul-profundo: #4d8bf0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--rosa-fondo);
+            color: var(--texto);
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--rosa-oscuro), var(--morado));
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(156, 39, 176, 0.3);
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><circle cx="25" cy="25" r="4" fill="white"/><circle cx="75" cy="50" r="3" fill="white"/><circle cx="20" cy="80" r="5" fill="white"/></svg>');
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin: 0 0 1rem;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .contenedor {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .btn-volver {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            background: var(--morado);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin: 1rem 0 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(156,39,176,0.3);
+        }
+
+        .btn-volver:hover {
+            background: var(--rosa-oscuro);
+            transform: translateX(-3px);
+        }
+
+        .seccion {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(233,67,147,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .seccion::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--rosa-claro);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+        }
+
+        h2 {
+            color: var(--morado);
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-top: 0;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icono-titulo {
+            font-size: 2rem;
+        }
+
+        .definicion {
+            background: var(--rosa-claro);
+            padding: 1.8rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            position: relative;
+            border-left: 5px solid var(--morado);
+        }
+
+        .definicion::before {
+            content: "❓";
+            position: absolute;
+            left: -15px;
+            top: -15px;
+            font-size: 1.8rem;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+
+        .enfermedad {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            align-items: start;
+        }
+
+        .enfermedad-icono {
+            font-size: 3rem;
+            text-align: center;
+            color: var(--rosa-oscuro);
+        }
+
+        .enfermedad-contenido h3 {
+            color: var(--morado);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .sintomas {
+            background: rgba(233,67,147,0.08);
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            border-left: 4px solid var(--rosa-oscuro);
+        }
+
+        .factor {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1.2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(233,67,147,0.05);
+            border: 1px solid rgba(233,67,147,0.1);
+        }
+
+        .factor-icono {
+            font-size: 2rem;
+            color: var(--morado);
+            flex-shrink: 0;
+        }
+
+        .estrategia {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            align-items: center;
+        }
+
+        .estrategia-icono {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--verde-cientifico);
+        }
+
+        .conclusion {
+            background: linear-gradient(to right, rgba(233,67,147,0.1), rgba(156,39,176,0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            border-left: 5px solid var(--morado);
+        }
+
+        .imagen-destacada {
+            width: 100%;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 3px solid white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, var(--rosa-oscuro), var(--morado));
+            color: white;
+            margin-top: 3rem;
+        }
+
+        .floating {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.6;
+            z-index: -1;
+            animation: flotar 15s linear infinite;
+        }
+
+        @keyframes flotar {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50vw, 30vh) rotate(90deg); }
+            50% { transform: translate(80vw, 60vh) rotate(180deg); }
+            75% { transform: translate(30vw, 80vh) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            .enfermedad, .estrategia {
+                grid-template-columns: 1fr;
+            }
+            .enfermedad-icono, .estrategia-icono {
+                text-align: left;
+            }
+            .factor {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Elementos flotantes decorativos -->
+    <div class="floating" style="top:20%;left:10%;">🦠</div>
+    <div class="floating" style="top:60%;left:80%;animation-delay:2s;">🧬</div>
+    <div class="floating" style="top:40%;left:50%;animation-delay:4s;">🔬</div>
+
+    <!-- Header -->
+    <header>
+        <h1><i class="fas fa-bacteria"></i> Disbiosis Vaginal</h1>
+        <p class="subtitle">Desequilibrio microbiano y su impacto en la salud femenina</p>
+    </header>
+
+    <div class="contenedor">
+        <a href="index.html" class="btn-volver"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+
+        <!-- Sección 1: Definición -->
+        <section class="seccion">
+            <h2><span class="icono-titulo">🔍</span> ¿Qué es la Disbiosis Vaginal?</h2>
+            
+            <div class="definicion">
+                <p>La disbiosis vaginal es un <strong>desequilibrio en la microbiota vaginal</strong>, donde se reduce la cantidad de bacterias beneficiosas, especialmente las del género <em>Lactobacillus</em>, que son esenciales para mantener un pH ácido (entre 3.8 y 4.5) en la vagina.</p>
+                <p>Este pH ácido protege el área vaginal al evitar el crecimiento de microorganismos patógenos. Cuando se altera este equilibrio, se facilita la proliferación de bacterias anaeróbicas y otros patógenos, lo que puede resultar en infecciones vaginales.</p>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Desequilibrio microbiano" class="imagen-destacada">
+        </section>
+
+        <!-- Sección 2: Enfermedades relacionadas -->
+        <section class="seccion">
+            <h2><span class="icono-titulo">⚠️</span> Enfermedades Relacionadas</h2>
+            <p>Las principales infecciones asociadas a la disbiosis vaginal son:</p>
+
+            <!-- Enfermedad 1: Vaginosis bacteriana -->
+            <div class="enfermedad">
+                <div class="enfermedad-icono">🧫</div>
+                <div class="enfermedad-contenido">
+                    <h3>Vaginosis Bacteriana (VB)</h3>
+                    <p>Esta infección ocurre cuando hay un crecimiento excesivo de bacterias anaeróbicas como <em>Gardnerella vaginalis</em> y <em>Atopobium vaginae</em>.</p>
+                    <div class="sintomas">
+                        <p><strong>Síntomas:</strong> flujo vaginal con un olor desagradable, parecido al pescado, picazón y ardor.</p>
+                        <p><strong>Complicaciones:</strong> aumenta el riesgo de parto prematuro, enfermedades de transmisión sexual (ETS) e infertilidad.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enfermedad 2: Candidiasis -->
+            <div class="enfermedad">
+                <div class="enfermedad-icono">🍶</div>
+                <div class="enfermedad-contenido">
+                    <h3>Candidiasis Vulvovaginal</h3>
+                    <p>Es causada por hongos del género <em>Candida</em>, especialmente <em>Candida albicans</em>.</p>
+                    <div class="sintomas">
+                        <p><strong>Síntomas:</strong> flujo blanco espeso, picazón intensa e inflamación.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enfermedad 3: Tricomoniasis -->
+            <div class="enfermedad">
+                <div class="enfermedad-icono">🔬</div>
+                <div class="enfermedad-contenido">
+                    <h3>Tricomoniasis</h3>
+                    <p>Esta es una infección parasitaria provocada por <em>Trichomonas vaginalis</em>.</p>
+                    <div class="sintomas">
+                        <p><strong>Síntomas:</strong> flujo espumoso de color amarillo-verdoso, dolor al orinar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p>Estas infecciones son comunes en mujeres en edad reproductiva y representan un desafío significativo para la salud pública debido a su impacto en la calidad de vida y la salud reproductiva.</p>
+        </section>
+
+        <!-- Sección 3: Factores contribuyentes -->
+        <section class="seccion">
+            <h2><span class="icono-titulo">📋</span> Factores Contribuyentes</h2>
+            <p>Diversos factores pueden alterar el equilibrio de la microbiota vaginal:</p>
+
+            <div class="factor">
+                <div class="factor-icono">💊</div>
+                <div>
+                    <h3>Uso de anticonceptivos</h3>
+                    <p>Los anticonceptivos hormonales pueden modificar el pH vaginal y disminuir la población de Lactobacillus.</p>
+                </div>
+            </div>
+
+            <div class="factor">
+                <div class="factor-icono">❤️</div>
+                <div>
+                    <h3>Actividad sexual</h3>
+                    <p>El contacto sexual sin protección introduce bacterias externas y afecta el equilibrio microbiano natural.</p>
+                </div>
+            </div>
+
+            <div class="factor">
+                <div class="factor-icono">🚿</div>
+                <div>
+                    <h3>Higiene íntima inadecuada</h3>
+                    <p>El uso de jabones perfumados o duchas vaginales puede eliminar las bacterias beneficiosas, alterando la microbiota vaginal.</p>
+                </div>
+            </div>
+
+            <div class="factor">
+                <div class="factor-icono">💊</div>
+                <div>
+                    <h3>Uso excesivo de antibióticos</h3>
+                    <p>Los antibióticos no solo matan a las bacterias patógenas, sino que también afectan a las bacterias beneficiosas, lo que favorece el desequilibrio.</p>
+                </div>
+            </div>
+
+            <div class="factor">
+                <div class="factor-icono">📚</div>
+                <div>
+                    <h3>Factores académicos y estrés</h3>
+                    <p>En mujeres universitarias, el estrés y los cambios en los hábitos de vida pueden influir negativamente en la estabilidad de la microbiota vaginal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 4: Estrategias de restauración -->
+        <section class="seccion">
+            <h2><span class="icono-titulo">🛡️</span> Estrategias de Restauración</h2>
+            <p>Se han identificado algunas intervenciones que pueden ayudar a restaurar el equilibrio microbiano:</p>
+
+            <div class="estrategia">
+                <div class="estrategia-icono">🦠</div>
+                <div>
+                    <h3>Probióticos</h3>
+                    <p>El uso de suplementos orales o vaginales que contengan cepas de <em>Lactobacillus</em> (como <em>L. rhamnosus GR-1</em> y <em>L. reuteri RC-14</em>) puede ser efectivo para restablecer la microbiota vaginal y reducir infecciones recurrentes.</p>
+                </div>
+            </div>
+
+            <div class="estrategia">
+                <div class="estrategia-icono">📚</div>
+                <div>
+                    <h3>Educación en salud</h3>
+                    <p>Es fundamental promover hábitos de higiene adecuados, el uso racional de antibióticos y prácticas sexuales seguras para prevenir desequilibrios en la microbiota vaginal.</p>
+                </div>
+            </div>
+
+            <div class="estrategia">
+                <div class="estrategia-icono">🔬</div>
+                <div>
+                    <h3>Investigación en poblaciones específicas</h3>
+                    <p>La investigación en mujeres universitarias, como la llevada a cabo en la Universidad de Santander, tiene como objetivo adaptar estrategias preventivas a este grupo vulnerable, teniendo en cuenta sus particularidades.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 5: Conclusión -->
+        <section class="seccion">
+            <div class="conclusion">
+                <h3><i class="fas fa-check-circle"></i> Conclusión</h3>
+                <p>La disbiosis vaginal es un problema complejo que puede tener graves consecuencias para la salud ginecológica y reproductiva. La investigación en curso, como la realizada en la Universidad de Santander, es esencial para entender cómo factores como el entorno académico pueden influir en la microbiota vaginal y para desarrollar intervenciones personalizadas.</p>
+                <p>Una combinación de probióticos, educación en salud y un seguimiento clínico adecuado podría ser clave para prevenir y tratar eficazmente estas infecciones vaginales.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p><i class="fas fa-university"></i> Universidad de Santander - Facultad de Salud</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem;opacity:0.8;">Investigación sobre salud vaginal en mujeres universitarias</p>
+    </footer>
+
+    <script>
+        // Añade más elementos flotantes dinámicamente
+        document.addEventListener("DOMContentLoaded", () => {
+            const icons = ["🦠", "🧫", "💊", "🚿", "❤️", "📚", "🔬"];
+            const colors = ["#e84393", "#9c27b0", "#6bd6c2", "#4d8bf0"];
+            
+            for (let i = 0; i < 10; i++) {
+                const anim = document.createElement("div");
+                anim.className = "floating";
+                anim.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                anim.style.left = `${Math.random() * 100}%`;
+                anim.style.top = `${Math.random() * 100}%`;
+                anim.style.animationDuration = `${10 + Math.random() * 20}s`;
+                anim.style.animationDelay = `${Math.random() * 5}s`;
+                anim.style.color = colors[Math.floor(Math.random() * colors.length)];
+                document.body.appendChild(anim);
+            }
+        });
+    </script>
+</body>
+</html>
