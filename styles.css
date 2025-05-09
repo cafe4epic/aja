@@ -1,0 +1,179 @@
+/* Paleta de colores científica */
+:root {
+    --morado-oscuro: #5e2b97;
+    --morado-claro: #8a4fff;
+    --rosa-profundo: #d63384;
+    --rosa-pastel: #ff8fab;
+    --verde-celular: #6bd6c2;
+    --azul-lab: #4d8bf0;
+    --fondo: #f9f4ff;
+    --texto: #2e2a3a;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Animaciones flotantes (bacterias y elementos científicos) */
+.floating {
+    position: fixed;
+    font-size: 2rem;
+    opacity: 0.7;
+    z-index: -1;
+    animation: flotar 15s linear infinite;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes flotar {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(50vw, 30vh) rotate(90deg); }
+    50% { transform: translate(80vw, 60vh) rotate(180deg); }
+    75% { transform: translate(30vw, 80vh) rotate(270deg); }
+    100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+/* Header con degradado */
+header {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    background: linear-gradient(135deg, var(--morado-oscuro), var(--rosa-profundo));
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Barra de navegación */
+header nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.7rem 1.5rem;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+header nav a:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Tarjetas con efecto "microscopio" */
+.card {
+    display: flex;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    gap: 2.5rem;
+    border-left: 5px solid var(--verde-celular);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    width: 320px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid var(--rosa-pastel);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    flex: 1;
+    position: relative;
+}
+
+.content h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--morado-oscuro);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px dashed var(--rosa-pastel);
+    padding-bottom: 0.5rem;
+}
+
+.content p {
+    margin-bottom: 2rem;
+    color: var(--texto);
+}
+
+/* Botón con efecto "bioluminiscente" */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(90deg, var(--morado-claro), var(--azul-lab));
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(93, 43, 151, 0.3);
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, var(--azul-lab), var(--morado-claro));
+    transform: translateX(5px);
+    box-shadow: 0 6px 15px rgba(93, 43, 151, 0.4);
+}
+
+/* Footer con degradado */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--morado-oscuro), var(--rosa-profundo));
+    color: white;
+    margin-top: 3rem;
+}
+
+footer p {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+    .card img {
+        width: 100%;
+    }
+    header h1 {
+        font-size: 2.2rem;
+    }
+}

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factores que Alteran la Microbiota Vaginal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --rosa-fondo: #fff0f7;
+            --rosa-claro: #ffd6eb;
+            --rosa-medio: #ff85c8;
+            --rosa-oscuro: #e84393;
+            --morado: #9c27b0;
+            --texto: #4a2a4d;
+            --verde-cientifico: #6bd6c2;
+            --azul-profundo: #4d8bf0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--rosa-fondo);
+            color: var(--texto);
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--rosa-oscuro), var(--morado));
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(156, 39, 176, 0.3);
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><circle cx="25" cy="25" r="4" fill="white"/><circle cx="75" cy="50" r="3" fill="white"/><circle cx="20" cy="80" r="5" fill="white"/></svg>');
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin: 0 0 1rem;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .contenedor {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .btn-volver {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            background: var(--morado);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin: 1rem 0 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(156,39,176,0.3);
+        }
+
+        .btn-volver:hover {
+            background: var(--rosa-oscuro);
+            transform: translateX(-3px);
+        }
+
+        .seccion {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(233,67,147,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .seccion::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--rosa-claro);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+        }
+
+        h2 {
+            color: var(--morado);
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-top: 0;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icono-titulo {
+            font-size: 2rem;
+        }
+
+        .introduccion {
+            background: var(--rosa-claro);
+            padding: 1.8rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            position: relative;
+            border-left: 5px solid var(--morado);
+        }
+
+        .introduccion::before {
+            content: "🧠";
+            position: absolute;
+            left: -15px;
+            top: -15px;
+            font-size: 1.8rem;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+
+        .factor {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+            align-items: start;
+        }
+
+        .factor-icono {
+            font-size: 3rem;
+            text-align: center;
+            color: var(--rosa-oscuro);
+        }
+
+        .factor-contenido h3 {
+            color: var(--morado);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .implicacion {
+            background: rgba(107,214,194,0.1);
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            border-left: 4px solid var(--verde-cientifico);
+            position: relative;
+        }
+
+        .implicacion::before {
+            content: "📌";
+            position: absolute;
+            left: -12px;
+            top: -12px;
+            background: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .conclusion {
+            background: linear-gradient(to right, rgba(233,67,147,0.1), rgba(156,39,176,0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            border-left: 5px solid var(--morado);
+        }
+
+        .imagen-destacada {
+            width: 100%;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 3px solid white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, var(--rosa-oscuro), var(--morado));
+            color: white;
+            margin-top: 3rem;
+        }
+
+        .floating {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.6;
+            z-index: -1;
+            animation: flotar 15s linear infinite;
+        }
+
+        @keyframes flotar {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50vw, 30vh) rotate(90deg); }
+            50% { transform: translate(80vw, 60vh) rotate(180deg); }
+            75% { transform: translate(30vw, 80vh) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            .factor {
+                grid-template-columns: 1fr;
+            }
+            .factor-icono {
+                text-align: left;
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Elementos flotantes decorativos -->
+    <div class="floating" style="top:20%;left:10%;">🦠</div>
+    <div class="floating" style="top:60%;left:80%;animation-delay:2s;">🧬</div>
+    <div class="floating" style="top:40%;left:50%;animation-delay:4s;">🔬</div>
+
+    <!-- Header -->
+    <header>
+        <h1><i class="fas fa-microscope"></i> Factores que Alteran la Microbiota Vaginal</h1>
+        <p class="subtitle">Elementos biológicos, conductuales y clínicos que afectan el equilibrio microbiano</p>
+    </header>
+
+    <div class="contenedor">
+        <a href="index.html" class="btn-volver"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+
+        <!-- Sección 1: Introducción -->
+        <section class="seccion">
+            <h2><span class="icono-titulo">🔬</span> Factores de Alteración</h2>
+            
+            <div class="introduccion">
+                <p>La microbiota vaginal es un ecosistema esencial para la salud ginecológica y reproductiva de la mujer. Su composición, dominada en condiciones normales por bacterias del género <strong>Lactobacillus</strong>, puede ser profundamente afectada por múltiples factores biológicos, conductuales y clínicos.</p>
+                <p>Cuando estos factores alteran el equilibrio natural de la flora vaginal, se produce una <strong>disbiosis</strong>, es decir, un desequilibrio microbiano que incrementa el riesgo de infecciones, inflamación y complicaciones ginecológicas.</p>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Factores que afectan la microbiota" class="imagen-destacada">
+        </section>
+
+        <!-- Sección 2: Factores detallados -->
+        <section class="seccion">
+            <h2><span class="icono-titulo">📋</span> Principales Factores</h2>
+            <p>A continuación, se detallan los principales factores que, según la literatura científica y los datos recopilados en la Universidad de Santander (UDES), influyen directamente en la alteración de la microbiota vaginal:</p>
+
+            <!-- Factor 1: Ciclo menstrual -->
+            <div class="factor">
+                <div class="factor-icono">🩸</div>
+                <div class="factor-contenido">
+                    <h3>Ciclo menstrual</h3>
+                    <p>El ciclo menstrual es un proceso natural que conlleva fluctuaciones hormonales significativas. Durante este ciclo, la concentración de estrógenos y progesterona varía, lo cual afecta el metabolismo del glucógeno en las células epiteliales vaginales. Este glucógeno es el principal sustrato que alimenta a los Lactobacillus.</p>
+                    <p>Cuando la concentración de glucógeno disminuye —como ocurre tras la menstruación—, se reduce la presencia de Lactobacillus y se eleva el pH vaginal, facilitando el crecimiento de bacterias anaeróbicas nocivas.</p>
+                    <div class="implicacion">
+                        <strong>Implicación clínica:</strong> Las mujeres son más vulnerables a infecciones como vaginosis bacteriana o candidiasis durante ciertas fases del ciclo.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Factor 2: Embarazo -->
+            <div class="factor">
+                <div class="factor-icono">🤰</div>
+                <div class="factor-contenido">
+                    <h3>Embarazo</h3>
+                    <p>Durante el embarazo se produce una hiperestimulación hormonal, especialmente de estrógenos. En general, esto favorece la colonización por Lactobacillus, ayudando a estabilizar la flora vaginal. Sin embargo, este equilibrio también puede ser alterado por factores como:</p>
+                    <ul>
+                        <li>Tratamientos con antibióticos</li>
+                        <li>Cambios inmunológicos</li>
+                        <li>Aumento de secreciones vaginales</li>
+                    </ul>
+                    <div class="implicacion">
+                        <strong>Implicación clínica:</strong> La disbiosis en mujeres embarazadas se ha relacionado con parto prematuro, infecciones ascendentes y ruptura prematura de membranas.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Factor 3: Anticonceptivos -->
+            <div class="factor">
+                <div class="factor-icono">💊</div>
+                <div class="factor-contenido">
+                    <h3>Uso de anticonceptivos</h3>
+                    <p>Los anticonceptivos hormonales, al modificar el equilibrio endocrino, pueden tener efectos indirectos sobre el entorno vaginal. Algunos estudios señalan que ciertos métodos hormonales disminuyen la diversidad bacteriana y afectan negativamente la proporción de Lactobacillus.</p>
+                    <div class="implicacion">
+                        <strong>Implicación clínica:</strong> Su uso prolongado puede favorecer la aparición de infecciones recurrentes o de difícil tratamiento si no se ajusta bien al organismo de cada mujer.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Factor 4: Actividad sexual -->
+            <div class="factor">
+                <div class="factor-icono">❤️</div>
+                <div class="factor-contenido">
+                    <h3>Actividad sexual</h3>
+                    <p>Las relaciones sexuales pueden alterar la microbiota por varios mecanismos:</p>
+                    <ul>
+                        <li>Introducción de microorganismos externos</li>
+                        <li>Aumento de la fricción e irritación de la mucosa</li>
+                        <li>Influencia del pH alcalino del semen</li>
+                        <li>Intercambio de bacterias de la flora de la pareja sexual</li>
+                    </ul>
+                    <div class="implicacion">
+                        <strong>Implicación clínica:</strong> Las mujeres sexualmente activas tienen mayor riesgo de disbiosis y enfermedades de transmisión sexual si no se utilizan métodos de barrera.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Factor 5: Antibióticos -->
+            <div class="factor">
+                <div class="factor-icono">💊</div>
+                <div class="factor-contenido">
+                    <h3>Uso de antibióticos</h3>
+                    <p>Los antibióticos actúan contra bacterias sin distinguir entre patógenas y benéficas. Por eso, tratamientos prolongados o repetidos afectan negativamente la microbiota, reduciendo drásticamente las poblaciones de Lactobacillus.</p>
+                    <div class="implicacion">
+                        <strong>Implicación clínica:</strong> Es común que tras una terapia antibiótica, las mujeres sufran infecciones fúngicas (como candidiasis) o bacterianas por desequilibrio.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Factor 6: Higiene íntima -->
+            <div class="factor">
+                <div class="factor-icono">🚿</div>
+                <div class="factor-contenido">
+                    <h3>Higiene íntima inadecuada</h3>
+                    <p>Muchas prácticas de higiene íntima, aunque bien intencionadas, son en realidad dañinas para la microbiota vaginal. Esto incluye:</p>
+                    <ul>
+                        <li>Duchas vaginales</li>
+                        <li>Jabones perfumados o antibacterianos</li>
+                        <li>Toallas húmedas con alcohol</li>
+                        <li>Desodorantes íntimos</li>
+                    </ul>
+                    <p>Estos productos eliminan bacterias protectoras y alteran la acidez vaginal, favoreciendo el desarrollo de microorganismos patógenos.</p>
+                    <div class="implicacion">
+                        <strong>Implicación clínica:</strong> El exceso de higiene puede ser tan perjudicial como la falta de esta. La limpieza externa con agua y productos neutros suele ser suficiente.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conclusión -->
+            <div class="conclusion">
+                <h3><i class="fas fa-puzzle-piece"></i> Conclusión</h3>
+                <p>La microbiota vaginal no es una entidad aislada. Su equilibrio depende de factores personales, hormonales, sexuales y clínicos que actúan sobre ella de forma constante. El conocimiento y control de estos factores es fundamental para mantener una microbiota saludable y prevenir infecciones recurrentes o complicaciones reproductivas.</p>
+                <p>En el contexto universitario, donde convergen varios de estos elementos —inicios de vida sexual, uso de anticonceptivos, estrés, cambios de hábitos—, educar sobre estos factores es una herramienta clave para la salud pública femenina.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p><i class="fas fa-university"></i> Universidad de Santander - Facultad de Salud</p>
+        <p style="margin-top:0.5rem;font-size:0.9rem;opacity:0.8;">Investigación sobre salud vaginal en mujeres universitarias</p>
+    </footer>
+
+    <script>
+        // Añade más elementos flotantes dinámicamente
+        document.addEventListener("DOMContentLoaded", () => {
+            const icons = ["🦠", "🧫", "💊", "🚿", "❤️", "🤰", "🩸"];
+            const colors = ["#e84393", "#9c27b0", "#6bd6c2", "#4d8bf0"];
+            
+            for (let i = 0; i < 10; i++) {
+                const anim = document.createElement("div");
+                anim.className = "floating";
+                anim.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                anim.style.left = `${Math.random() * 100}%`;
+                anim.style.top = `${Math.random() * 100}%`;
+                anim.style.animationDuration = `${10 + Math.random() * 20}s`;
+                anim.style.animationDelay = `${Math.random() * 5}s`;
+                anim.style.color = colors[Math.floor(Math.random() * colors.length)];
+                document.body.appendChild(anim);
+            }
+        });
+    </script>
+</body>
+</html>

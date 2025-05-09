@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microbiota Vaginal en Universitarias</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --rosa-fondo: #fff0f7;
+            --rosa-claro: #ffd6eb;
+            --rosa-medio: #ff85c8;
+            --rosa-oscuro: #e84393;
+            --morado: #9c27b0;
+            --texto: #4a2a4d;
+            --verde-cientifico: #6bd6c2;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--rosa-fondo);
+            color: var(--texto);
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--rosa-oscuro), var(--morado));
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(156, 39, 176, 0.3);
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><circle cx="25" cy="25" r="4" fill="white"/><circle cx="75" cy="50" r="3" fill="white"/><circle cx="20" cy="80" r="5" fill="white"/></svg>');
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin: 0 0 1rem;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .nav-barra {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            flex-wrap: wrap;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            border-radius: 50px;
+            max-width: 900px;
+            margin: 2rem auto 0;
+        }
+
+        .nav-barra a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-barra a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .seccion {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(233,67,147,0.1);
+            margin-bottom: 3rem;
+            transition: transform 0.3s;
+        }
+
+        .seccion:hover {
+            transform: translateY(-5px);
+        }
+
+        .grid-seccion {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 400px;
+        }
+
+        .imagen-seccion {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .contenido-seccion {
+            padding: 3rem;
+            position: relative;
+        }
+
+        .contenido-seccion h2 {
+            color: var(--morado);
+            font-family: 'Playfair Display', serif;
+            margin-top: 0;
+            font-size: 2rem;
+            border-bottom: 2px dashed var(--rosa-medio);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .resumen {
+            background: var(--rosa-claro);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .resumen::before {
+            content: "📌";
+            position: absolute;
+            left: -15px;
+            top: -15px;
+            font-size: 1.5rem;
+            background: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2.2rem;
+            background: linear-gradient(to right, var(--rosa-oscuro), var(--morado));
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(156,39,176,0.3);
+            float: right;
+        }
+
+        .btn:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(156,39,176,0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--rosa-oscuro), var(--morado));
+            color: white;
+        }
+
+        .floating {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.6;
+            z-index: -1;
+            animation: flotar 15s linear infinite;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.1));
+        }
+
+        @keyframes flotar {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50vw, 30vh) rotate(90deg); }
+            50% { transform: translate(80vw, 60vh) rotate(180deg); }
+            75% { transform: translate(30vw, 80vh) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        @media (max-width: 900px) {
+            .grid-seccion {
+                grid-template-columns: 1fr;
+            }
+            .imagen-seccion {
+                height: 300px;
+                order: -1;
+            }
+            .nav-barra {
+                gap: 0.8rem;
+                padding: 1rem;
+            }
+            .nav-barra a {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Elementos flotantes decorativos -->
+    <div class="floating" style="top:20%;left:10%;">🦠</div>
+    <div class="floating" style="top:60%;left:80%;animation-delay:2s;">🧬</div>
+    <div class="floating" style="top:40%;left:50%;animation-delay:4s;">🔬</div>
+    <div class="floating" style="top:70%;left:20%;animation-delay:1s;">🧫</div>
+    <div class="floating" style="top:30%;left:70%;animation-delay:3s;">🧪</div>
+
+    <!-- Header -->
+    <header>
+        <h1><i class="fas fa-dna"></i> Microbiota Vaginal</h1>
+        <p class="subtitle">Estudio de su relación con infecciones en universitarias de la UDES</p>
+        
+        <div class="nav-barra">
+            <a href="#microbiota"><i class="fas fa-bacteria"></i> ¿Qué es?</a>
+            <a href="#factores"><i class="fas fa-exclamation-triangle"></i> Factores</a>
+            <a href="#disbiosis"><i class="fas fa-virus"></i> Disbiosis</a>
+            <a href="#probioticos"><i class="fas fa-pills"></i> Probióticos</a>
+            <a href="#universitarias"><i class="fas fa-user-graduate"></i> Universitarias</a>
+            <a href="#objetivos"><i class="fas fa-bullseye"></i> Objetivos</a>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <!-- Sección 1: ¿Qué es la microbiota vaginal? -->
+        <section id="microbiota" class="seccion">
+            <div class="grid-seccion">
+                <div class="imagen-seccion" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Lactobacillus_sp_01.png/250px-Lactobacillus_sp_01.png');"></div>
+                <div class="contenido-seccion">
+                    <h2><i class="fas fa-bacteria"></i> ¿Qué es la microbiota vaginal?</h2>
+                    <div class="resumen">
+                        La microbiota vaginal es un ecosistema microbiano natural presente en la vagina, compuesto principalmente por bacterias del género Lactobacillus. Estas bacterias mantienen un pH ácido que inhibe el crecimiento de microorganismos patógenos.
+                    </div>
+                    <p>Este equilibrio microbiano es esencial para la salud ginecológica y reproductiva. Los Lactobacillus producen ácido láctico, peróxido de hidrógeno y bacteriocinas que protegen contra infecciones. Cualquier alteración en su composición puede generar consecuencias clínicas importantes, especialmente durante la etapa reproductiva.</p>
+                    <p>En mujeres universitarias, factores como el estrés académico pueden alterar esta composición, reduciendo los Lactobacillus y aumentando bacterias anaeróbicas patógenas.</p>
+                    <a href="microbiota.html" class="btn">Saber más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 2: Factores que alteran la microbiota -->
+        <section id="factores" class="seccion">
+            <div class="grid-seccion">
+                <div class="contenido-seccion">
+                    <h2><i class="fas fa-exclamation-circle"></i> Factores que alteran la microbiota</h2>
+                    <div class="resumen">
+                        Diversos factores pueden romper el equilibrio de la microbiota vaginal y desencadenar disbiosis, incluyendo uso de antibióticos, anticonceptivos hormonales, higiene inadecuada y actividad sexual.
+                    </div>
+                    <p>Estos factores reducen las poblaciones de Lactobacillus, permitiendo la proliferación de bacterias dañinas como <em>Gardnerella vaginalis</em> o <em>Atopobium vaginae</em>, asociadas a infecciones.</p>
+                    <ul>
+                        <li><strong>Antibióticos:</strong> Eliminan bacterias beneficiosas junto con las patógenas</li>
+                        <li><strong>Anticonceptivos hormonales:</strong> Alteran el pH vaginal</li>
+                        <li><strong>Hábitos de higiene:</strong> Uso de jabones perfumados o duchas vaginales</li>
+                        <li><strong>Actividad sexual:</strong> Intercambio de fluidos y cambios de pH</li>
+                        <li><strong>Estrés:</strong> Afecta el sistema inmunológico y equilibrio microbiano</li>
+                    </ul>
+                    <a href="factores.html" class="btn">Saber más <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="imagen-seccion" style="background-image: url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+            </div>
+        </section>
+
+        <!-- Sección 3: Disbiosis y enfermedades -->
+        <section id="disbiosis" class="seccion">
+            <div class="grid-seccion">
+                <div class="imagen-seccion" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeNRqb9l9VDVWzDIuFNhK5tecmemdrCWP1GQ&s');"></div>
+                <div class="contenido-seccion">
+                    <h2><i class="fas fa-virus"></i> Disbiosis y enfermedades vaginales</h2>
+                    <div class="resumen">
+                        La disbiosis vaginal es el desequilibrio de la flora natural, donde bacterias beneficiosas disminuyen y microorganismos patógenos proliferan, relacionada con vaginosis bacteriana, candidiasis y tricomoniasis.
+                    </div>
+                    <p>Estas infecciones no solo generan molestias (picor, flujo anormal, mal olor), sino que también pueden derivar en:</p>
+                    <ul>
+                        <li>Complicaciones en el embarazo (parto prematuro)</li>
+                        <li>Mayor riesgo de ETS</li>
+                        <li>Enfermedad inflamatoria pélvica</li>
+                        <li>Problemas de fertilidad</li>
+                    </ul>
+                    <p>En Ecuador, se ha observado que el 22.9% de las mujeres presentan infecciones vaginales, siendo la vaginosis bacteriana la más prevalente.</p>
+                    <a href="#" class="btn">Saber más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 4: Importancia de los probióticos -->
+        <section id="probioticos" class="seccion">
+            <div class="grid-seccion">
+                <div class="contenido-seccion">
+                    <h2><i class="fas fa-pills"></i> Importancia de los probióticos</h2>
+                    <div class="resumen">
+                        Los probióticos con cepas específicas de Lactobacillus han demostrado ser efectivos para restaurar y mantener el equilibrio de la microbiota vaginal, previniendo recurrencias de infecciones.
+                    </div>
+                    <p>Beneficios clave:</p>
+                    <ul>
+                        <li>Restablecen el pH vaginal ácido</li>
+                        <li>Compiten con patógenos por espacio y nutrientes</li>
+                        <li>Producen sustancias antimicrobianas</li>
+                        <li>Mejoran la respuesta inmune local</li>
+                        <li>Reducen la inflamación</li>
+                    </ul>
+                    <p>Son especialmente útiles para mujeres que han sido tratadas con antibióticos o presentan disbiosis recurrente, como muchas universitarias.</p>
+                    <a href="#" class="btn">Saber más <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="imagen-seccion" style="background-image: url('https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+            </div>
+        </section>
+
+        <!-- Sección 5: Impacto en universitarias -->
+        <section id="universitarias" class="seccion">
+            <div class="grid-seccion">
+                <div class="imagen-seccion" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="contenido-seccion">
+                    <h2><i class="fas fa-user-graduate"></i> Impacto en universitarias</h2>
+                    <div class="resumen">
+                        Las mujeres universitarias (18-25 años) son vulnerables a desequilibrios en la microbiota vaginal por inicio de vida sexual, uso de anticonceptivos, hábitos de higiene y estrés académico.
+                    </div>
+                    <p>Factores de riesgo específicos:</p>
+                    <ul>
+                        <li>Estrés crónico por carga académica</li>
+                        <li>Hábitos de sueño irregulares</li>
+                        <li>Alimentación desequilibrada</li>
+                        <li>Uso frecuente de antibióticos</li>
+                        <li>Mayor actividad sexual</li>
+                    </ul>
+                    <p>Este grupo es clave para la salud pública, ya que sus hábitos actuales influyen directamente en su bienestar reproductivo futuro.</p>
+                    <a href="#" class="btn">Saber más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 6: Objetivos del estudio -->
+        <section id="objetivos" class="seccion">
+            <div class="grid-seccion">
+                <div class="contenido-seccion">
+                    <h2><i class="fas fa-bullseye"></i> Objetivos del estudio</h2>
+                    <div class="resumen">
+                        Caracterizar la microbiota vaginal en universitarias de la UDES y relacionarla con factores sociodemográficos, clínicos y conductuales para proponer estrategias de prevención.
+                    </div>
+                    <p><strong>Objetivo general:</strong></p>
+                    <p>Analizar la composición microbiana vaginal y su relación con infecciones en estudiantes universitarias.</p>
+                    
+                    <p><strong>Objetivos específicos:</strong></p>
+                    <ul>
+                        <li>Describir perfiles microbianos mediante técnicas moleculares</li>
+                        <li>Identificar factores de riesgo (higiene, anticonceptivos, estrés)</li>
+                        <li>Evaluar prevalencia de disbiosis y vaginosis bacteriana</li>
+                        <li>Desarrollar estrategias educativas para salud vaginal</li>
+                    </ul>
+                    <a href="#" class="btn">Saber más <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="imagen-seccion" style="background-image: url('https://i.pinimg.com/736x/d9/8f/1a/d98f1aa604b49a3e10a422321da08768.jpg');"></div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p><i class="fas fa-university"></i> Universidad de Santander - Facultad de Salud</p>
+        <p style="margin-top:1rem;font-size:0.9rem;opacity:0.8;">Investigación sobre microbiota vaginal y salud reproductiva en mujeres universitarias</p>
+    </footer>
+
+    <script>
+        // Añade más elementos flotantes dinámicamente
+        document.addEventListener("DOMContentLoaded", () => {
+            const icons = ["🦠", "🧫", "🧪", "🧬", "🔬", "💊", "🩺", "🧴"];
+            const colors = ["#e84393", "#9c27b0", "#6bd6c2", "#4d8bf0"];
+            
+            for (let i = 0; i < 10; i++) {
+                const anim = document.createElement("div");
+                anim.className = "floating";
+                anim.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                anim.style.left = `${Math.random() * 100}%`;
+                anim.style.top = `${Math.random() * 100}%`;
+                anim.style.animationDuration = `${10 + Math.random() * 20}s`;
+                anim.style.animationDelay = `${Math.random() * 5}s`;
+                anim.style.color = colors[Math.floor(Math.random() * colors.length)];
+                document.body.appendChild(anim);
+            }
+
+            // Efecto smooth scroll para los enlaces del menú
+            document.querySelectorAll('.nav-barra a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
